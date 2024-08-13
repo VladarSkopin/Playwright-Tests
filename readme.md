@@ -4,10 +4,10 @@ Playwright automation tests
 - Testing web elements, performing actions on them
 - Asserting expected results
 - Testing API
-- Using fixtures
+- Using fixtures, hooks and helper functions
 - Testing databases, executing SQL code
 - Applying Page-Object-Model
 - Using plugins for various purposes
-- Integratong tests with CICD pipelines
+- Integrating tests with CICD pipelines
 
 
