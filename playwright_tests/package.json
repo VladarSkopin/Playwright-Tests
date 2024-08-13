@@ -1,7 +1,7 @@
 {
   "name": "playwright_tests",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web automation tests",
   "main": "index.js",
   "scripts": {},
   "keywords": [],
