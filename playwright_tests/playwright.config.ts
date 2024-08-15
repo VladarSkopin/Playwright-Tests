@@ -51,6 +51,10 @@ export default defineConfig({
       name: 'edge',
       use: { ...devices['Desktop Edge'] },
     },
+    {
+      name: 'iphone 13',
+      use: { ...devices['iPhone 13'] }
+    }
   ],
 
 });
