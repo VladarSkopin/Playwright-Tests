@@ -1,12 +1,10 @@
-// https://practice.expandtesting.com/inputs
-
 import { test, expect } from '@playwright/test';
 
 
 test.describe('Test Inputs', async () => {
 
     test.beforeEach(async ({ page }) => {
-        await page.goto('https://www.techlistic.com/p/selenium-practice-form.html');
+        await page.goto('/p/selenium-practice-form.html');
     })
 
     test('General Page Layout', async ({ page }) => {
