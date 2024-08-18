@@ -9,7 +9,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [['html'], ['list']],
   use: {
-    baseURL: 'https://www.techlistic.com',
+    //baseURL: 'https://www.techlistic.com',
     trace: 'on-first-retry',
   },
   projects: [
