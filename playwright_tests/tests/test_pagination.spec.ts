@@ -51,11 +51,15 @@ test.describe('Test Pagination', { tag: '@ui' }, async () => {
         const sectionTitlesArray = await page.locator(paginationLocators.sectionTitleArray);
         const numberOfWebTitles = await sectionTitlesArray.count();
 
+        // Check CSS styles for all section titles
+        for (let i: number = 0; i < numberOfWebTitles; i ++) {
+            await cssSectionTitleCheck(sectionTitlesArray.nth(i));
+        }
 
+        // Check that all expected section titles are present on the web page
         for (const title of sectionTitles) {
             let found = false;
             for (let i = 0; i < numberOfWebTitles && !found; i++) {
-                await cssSectionTitleCheck(sectionTitlesArray.nth(i));
                 const elementHandle = await sectionTitlesArray.nth(i).elementHandle();
                 const elementTextContent = await page.evaluate(el => el?.textContent?.trim(), elementHandle);
 

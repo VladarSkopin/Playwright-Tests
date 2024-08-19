@@ -4,6 +4,7 @@ import { expect, Locator } from "@playwright/test";
 
 export async function cssSectionTitleCheck (sectionTitle: Locator) {
     const title = await sectionTitle;
+    console.log(`Asserting CSS for section title = ${title}`);
     await expect(title).toHaveCSS('font-size', '40px');
     await expect(title).toHaveCSS('text-align', 'center');
     await expect(title).toHaveCSS('box-sizing', 'border-box');
@@ -12,6 +13,7 @@ export async function cssSectionTitleCheck (sectionTitle: Locator) {
 
 export async function cssButtonCheck (btnPagination: Locator) {
     const btn = await btnPagination;
+    console.log(`Asserting CSS for button = ${btn}`);
     await expect(btn).toHaveCSS('display', 'inline-block');
     await expect(btn).toHaveCSS('padding', '6px 24px');
     await expect(btn).toHaveCSS('font-size', '21px');
