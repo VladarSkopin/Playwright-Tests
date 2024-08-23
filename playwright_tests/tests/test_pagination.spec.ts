@@ -76,23 +76,114 @@ test.describe('Test Pagination', { tag: '@ui' }, async () => {
 
     });
 
-    test('Pagination Functionality', async ({ page }) => {
+    test.only('Normal Pagination Functionality', async ({ page }) => {
 
-        test.step('Normal pagination', () => {
+        await page.waitForSelector('div.data-container > ul', { state: 'visible' });
+        await page.waitForSelector('div.paginationjs-pages', { state: 'visible' });
+
+        const paginationListNormal = await page.locator('div.data-container > ul').nth(0).locator('li');
+        const paginationListCountNormal = await paginationListNormal.count();
+        expect (paginationListCountNormal).toEqual(10);
+        // Check that numbers are 1-10
+
+        const paginationPanelNormal = await page.locator('div.paginationjs-pages').nth(0);
+        // toHaveCount(0) means that this element is not present on the page ("Back" button is disabled)
+        await expect(paginationPanelNormal.locator('li.paginationjs-prev.J-paginationjs-previous ')).toHaveCount(0);
+
+        // Check that "1" is grey
+
+        // Check that "2" is white
 
 
-        });
+        // Click the "Next" button
+        await paginationPanelNormal.locator('li.paginationjs-next.J-paginationjs-next ').click();
 
-        test.step('Show "go" pagination', () => {
+        // Check that "1" is white
+
+        // Check that "2" is grey
+
+        // "Back" button is enabled
+        await expect(paginationPanelNormal.locator('li.paginationjs-prev.J-paginationjs-previous ')).toHaveCount(1);
+
+        // Check that numbers are 11-20
 
 
-        });
+        // Click the "20" page
 
-        test.step('Auto hide pagination', () => {
+        // "Next" button is disabled
+
+        // Check that "2" is white
+
+        // Check that "20" is grey
+
+        // Check that numbers are 191-195
 
 
-        });
+        // Click the "Back" button
+
+        // Check that "20" is white
+
+        // Check that "19" is grey
+
+        // Check that numbers are 181-190
 
     });
+
+
+    
+    test('"Go"" Pagination Functionality', async ({ page }) => {
+
+        await page.waitForSelector('div.data-container > ul', { state: 'visible' });
+        await page.waitForSelector('div.paginationjs-pages', { state: 'visible' });
+
+        const paginationListNormal = await page.locator('div.data-container > ul').nth(3).locator('li');
+        const paginationListCountNormal = await paginationListNormal.count();
+        expect (paginationListCountNormal).toEqual(5);
+        // Check that numbers are 1-5
+
+        const paginationPanelNormal = await page.locator('div.paginationjs-pages').nth(0);
+        // toHaveCount(0) means that this element is not present on the page ("Back" button is disabled)
+        await expect(paginationPanelNormal.locator('li.paginationjs-prev.J-paginationjs-previous ')).toHaveCount(0);
+
+        // Check that "1" is grey
+
+        // Check that "2" is white
+
+
+        // Click the "Next" button
+        await paginationPanelNormal.locator('li.paginationjs-next.J-paginationjs-next ').click();
+
+        // Check that "1" is white
+
+        // Check that "2" is grey
+
+        // "Back" button is enabled
+        await expect(paginationPanelNormal.locator('li.paginationjs-prev.J-paginationjs-previous ')).toHaveCount(1);
+
+        // Check that numbers are 6-10
+
+
+        // Fill in "8"
+        // Click the "Go" button
+
+        // "Next" button is disabled
+
+        // Check that "2" is white
+
+        // Check that "8" is grey
+
+        // Check that numbers are 36-40
+
+
+        // Click the "Back" button
+
+        // Check that "8" is white
+
+        // Check that "7" is grey
+
+        // Check that numbers are 31-35
+
+    });
+
 
 });
